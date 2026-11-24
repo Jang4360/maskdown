@@ -13,7 +13,7 @@
 
 ## 2. 처리 파이프라인
 
-![maskdown 처리 파이프라인](./docs/images/pipeline.jpg)
+![maskdown 처리 파이프라인](./docs/images/pipeline-v2.jpg)
 
 * **사전 마스킹 체크리스트 (1단계 · LLM 앞단)**:
   * 문서를 투입하기 전, 사용자가 **이번 문서에서 어떤 유형의 정보(개인정보, 기업·계약 기밀, 시스템·IP·계정 등)를 마스킹할지 체크리스트로 사전 선택**합니다.
@@ -38,7 +38,14 @@
 
 ## 4. 팀 논의 및 서칭 항목
 
-본격 구현 전, 팀원들과 아래 4가지 영역을 서칭하고 기준을 확정합니다.
+본격 구현 전, 아래 4가지 영역을 독립 폴더에서 서칭·정리하고 기준을 확정합니다. (영역별 폴더를 분리해 동시 작업 시 Git 충돌을 방지합니다.)
+
+| 번호 | 서칭 영역 | 진행 방식 | 작업 폴더 |
+| :---: | :--- | :--- | :--- |
+| **01** | 로컬 모델 선정 (단일 VLM vs 분리) | 팀 공동 | [`docs/research/01-model-selection`](./docs/research/01-model-selection/README.md) |
+| **02** | 보안 · 사전 마스킹 체크리스트 정책 | 팀 공동 | [`docs/research/02-checklist-policy`](./docs/research/02-checklist-policy/README.md) |
+| **03** | 이미지 → 문맥 반영 텍스트 변환 기준 | 개별 담당 | [`docs/research/03-image-to-text`](./docs/research/03-image-to-text/README.md) |
+| **04** | 미처리("못했다") 판정선 및 검수 방식 | 개별 담당 | [`docs/research/04-failsafe-and-review`](./docs/research/04-failsafe-and-review/README.md) |
 
 ### ① 로컬 모델 선정 (가장 핵심)
 * **단일 멀티모달 모델(Local VLM) 통합 vs 역할 분리 비교** (16GB RAM / CPU 환경 벤치마크):
